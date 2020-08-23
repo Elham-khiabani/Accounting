@@ -1,4 +1,5 @@
 ﻿using Accounting.DataLayer.Repositories;
+
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Accounting.DataLayer.Services
 {
-    class CustomerRepository : ICustomerRepository
+    public class CustomerRepository : ICustomerRepository
     {
         Accounting_DBEntities db = new Accounting_DBEntities();
         public bool DeleteCustomer(Customers customer)

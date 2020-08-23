@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Accounting.DataLayer.Repositories
 {
-    interface ICustomerRepository
+    public interface ICustomerRepository
     {
         List<Customers> GetAllCustomers();
         Customers GetCustomerById(int customerId);
