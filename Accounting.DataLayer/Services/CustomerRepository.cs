@@ -56,6 +56,12 @@ namespace Accounting.DataLayer.Services
             return db.Customers.Find(customerId);
         }
 
+        public IEnumerable<Customers> GetCustomersByFilter(string parameter)
+        {
+            return db.Customers.Where(c =>
+                c.FullName.Contains(parameter) || c.EmailAddress.Contains(parameter) || c.Mobile.Contains(parameter)).ToList();
+        }
+
         public bool InsertCustomer(Customers customer)
         {
             try
