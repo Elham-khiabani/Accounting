@@ -89,6 +89,7 @@
             this.Name = "frmMain";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "حسابداری شخصی من";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

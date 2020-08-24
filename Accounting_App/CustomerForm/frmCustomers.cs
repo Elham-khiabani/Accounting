@@ -21,6 +21,7 @@ namespace Accounting_App
         private void frmCustomers_Load(object sender, EventArgs e)
         {
             BindGrid();
+
         }
         void BindGrid()
         {
@@ -44,6 +45,38 @@ namespace Accounting_App
         {
             txtFilter.Text = "";
             BindGrid();
+        }
+
+        private void btnDeleteCustomer_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(dgCustomers.CurrentRow.Cells[0].Value.ToString());
+            string fullName = dgCustomers.CurrentRow.Cells[1].Value.ToString();
+            using (UnitOfWork db=new UnitOfWork())
+            {
+                if (dgCustomers.CurrentRow!=null)
+                {
+                    if (RtlMessageBox.Show($"ایا از حذف {fullName} اطمینان دارید.", "هشدار", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        db.CustomerRepository.DeleteCustomer(id);
+                        db.Save();
+                        BindGrid();
+                    }
+                }
+                else
+                {
+                    RtlMessageBox.Show("لطفا یک شخص را انتخاب کنید.");
+                }
+            }
+        }
+
+        private void btnNewCustomer_Click(object sender, EventArgs e)
+        {
+            frmAddOrEdit frm = new frmAddOrEdit();
+            if (frm.ShowDialog()==DialogResult.OK)
+            {
+                BindGrid();
+            }
+            
         }
     }
 }
