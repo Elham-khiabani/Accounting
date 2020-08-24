@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Accounting.DataLayer;
 using Accounting.DataLayer.Repositories;
 using Accounting.DataLayer.Services;
+using Accounting.DataLayer.Context;
 
 namespace TestCustomer
 {
@@ -13,7 +14,10 @@ namespace TestCustomer
     {
         static void Main(string[] args)
         {
-            ICustomerRepository customer = new CustomerRepository();
+            //Dependency Injection
+            //Accounting_DBEntities db = new Accounting_DBEntities();
+            //ICustomerRepository customer = new CustomerRepository(db);
+            //----------------------------------------------------------
             //var list = customer.GetAllCustomers();
             //Console.WriteLine("لطفا کد شخص را وارد کنید");
             //int id = int.Parse(Console.ReadLine());
@@ -33,7 +37,12 @@ namespace TestCustomer
             //{
             //    Console.WriteLine($"Name: {item.FullName} , Mobile: {item.Mobile} , Email: {item.EmailAddress}");
             //}
-            //onsole.ReadKey();
+            //UnitOfWork
+
+            UnitOfWork db = new UnitOfWork();
+            var list = db.CustomerRepository.GetAllCustomers();
+            db.Dispose();
+            Console.ReadKey();
         }
 
     }
