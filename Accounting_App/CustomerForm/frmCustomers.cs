@@ -20,6 +20,7 @@ namespace Accounting_App
 
         private void frmCustomers_Load(object sender, EventArgs e)
         {
+
             BindGrid();
 
         }
@@ -77,6 +78,20 @@ namespace Accounting_App
                 BindGrid();
             }
             
+        }
+
+        private void btnEditCustomer_Click(object sender, EventArgs e)
+        {
+            if (dgCustomers.CurrentRow!=null)
+            {
+                int customerId = int.Parse(dgCustomers.CurrentRow.Cells[0].Value.ToString());
+                frmAddOrEdit frmEdit = new frmAddOrEdit();
+                frmEdit.customerId = customerId;
+                if(frmEdit.ShowDialog()==DialogResult.OK)
+                {
+                    BindGrid();
+                }
+            }
         }
     }
 }

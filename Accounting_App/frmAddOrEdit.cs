@@ -16,7 +16,8 @@ namespace Accounting_App
 {
     public partial class frmAddOrEdit : Form
     {
-        UnitOfWork db = new UnitOfWork();
+        public int customerId = 0;
+        
         public frmAddOrEdit()
         {
             InitializeComponent();
@@ -24,7 +25,24 @@ namespace Accounting_App
 
         private void frmAddOrEdit_Load(object sender, EventArgs e)
         {
-
+            using (UnitOfWork db = new UnitOfWork())
+            {
+                if (customerId!=0)
+                {
+                    this.Text = "ویرایش شخص";
+                    btnSubmit.Text = "ویرایش";
+                    var customer = db.CustomerRepository.GetCustomerById(customerId);
+                    txtFullName.Text = customer.FullName;
+                    txtMobile.Text = customer.Mobile;
+                    txtEmailAddress.Text = customer.EmailAddress;
+                    txtAddress.Text = customer.Address;
+                    pcCustomerPhoto.ImageLocation = Application.StartupPath + "/Images/" + customer.CustomerImage;
+                }
+                else
+                {
+                    this.Text = "افزودن شخص";
+                }
+            }
         }
 
         private void btnSelectPhoto_Click(object sender, EventArgs e)
@@ -40,26 +58,38 @@ namespace Accounting_App
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            string ImageName = Guid.NewGuid().ToString() + Path.GetExtension(pcCustomerPhoto.ImageLocation);
-            string Path = Application.StartupPath + "/Images/";
-            if (!Directory.Exists(Path))
+            using (UnitOfWork db = new UnitOfWork())
             {
-                Directory.CreateDirectory(Path);
-            }
-            pcCustomerPhoto.Image.Save(Path + ImageName);
-            if (BaseValidator.IsFormValid(this.components))
-            {
-                Customers customer = new Customers()
+
+                string ImageName = Guid.NewGuid().ToString() + Path.GetExtension(pcCustomerPhoto.ImageLocation);
+                string PathName = Application.StartupPath + "/Images/";
+                if (!Directory.Exists(PathName))
                 {
-                    FullName = txtFullName.Text,
-                    Address = txtAddress.Text,
-                    EmailAddress = txtEmailAddress.Text,
-                    Mobile = txtMobile.Text,
-                    CustomerImage = ImageName
-                };
-                db.CustomerRepository.InsertCustomer(customer);
-                db.Save();
-                DialogResult = DialogResult.OK;
+                    Directory.CreateDirectory(PathName);
+                }
+                pcCustomerPhoto.Image.Save(PathName + ImageName);
+                if (BaseValidator.IsFormValid(this.components))
+                {
+                    Customers customer = new Customers()
+                    {
+                        FullName = txtFullName.Text,
+                        Address = txtAddress.Text,
+                        EmailAddress = txtEmailAddress.Text,
+                        Mobile = txtMobile.Text,
+                        CustomerImage = ImageName
+                    };
+                    if (customerId==0)
+                    {
+                        db.CustomerRepository.InsertCustomer(customer);
+                    }
+                    else
+                    {
+                        customer.CustomerID = customerId;
+                        db.CustomerRepository.UpdateCustomer(customer);
+                    }
+                    db.Save();
+                    DialogResult = DialogResult.OK;
+                }
             }
         }
     }
