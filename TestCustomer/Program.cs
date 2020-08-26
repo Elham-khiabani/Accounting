@@ -39,8 +39,10 @@ namespace TestCustomer
             //}
             //UnitOfWork
 
-            UnitOfWork db = new UnitOfWork();
-            var list = db.CustomerRepository.GetAllCustomers();
+            Accounting_DBEntities db = new Accounting_DBEntities();
+            GenericRepository<Customers> customerRepository = new GenericRepository<Customers>(db);
+            var list = customerRepository.GetById(2);
+
             db.Dispose();
             Console.ReadKey();
         }
