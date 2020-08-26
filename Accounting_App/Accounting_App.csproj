@@ -70,6 +70,12 @@
     <Compile Include="frmAddOrEdit.Designer.cs">
       <DependentUpon>frmAddOrEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmNewTransaction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNewTransaction.Designer.cs">
+      <DependentUpon>frmNewTransaction.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validator\BaseValidator.cs">
@@ -110,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddOrEdit.resx">
       <DependentUpon>frmAddOrEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNewTransaction.resx">
+      <DependentUpon>frmNewTransaction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
