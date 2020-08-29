@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Accounting_App
 {
-    public partial class frmMain : Form
+    public partial class FrmMain : Form
     {
-        public frmMain()
+        public FrmMain()
         {
             InitializeComponent();
         }

@@ -232,7 +232,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.TextBox txtName;
-        private ValidationComponents.RequiredFieldValidator requiredFieldValidator1;
         private System.Windows.Forms.Label lblTransaction;
         private System.Windows.Forms.RadioButton rbRecive;
         private System.Windows.Forms.RadioButton rbPay;
@@ -241,6 +240,5 @@
         private System.Windows.Forms.Label lblDesceription;
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.Button btnSave;
-        private ValidationComponents.RangeValidator rangeValidator1;
     }
 }
