@@ -34,6 +34,8 @@
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.btnCustomers = new System.Windows.Forms.ToolStripButton();
             this.btnNewAcconting = new System.Windows.Forms.ToolStripButton();
+            this.btnReportPay = new System.Windows.Forms.ToolStripButton();
+            this.btnReportRecive = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.SuspendLayout();
@@ -63,7 +65,9 @@
             this.toolStrip2.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnCustomers,
-            this.btnNewAcconting});
+            this.btnNewAcconting,
+            this.btnReportPay,
+            this.btnReportRecive});
             this.toolStrip2.Location = new System.Drawing.Point(0, 34);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(575, 74);
@@ -92,7 +96,29 @@
             this.btnNewAcconting.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnNewAcconting.Click += new System.EventHandler(this.btnNewAcconting_Click);
             // 
-            // frmMain
+            // btnReportPay
+            // 
+            this.btnReportPay.Image = global::Accounting_App.Properties.Resources.servicesCosts;
+            this.btnReportPay.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnReportPay.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnReportPay.Name = "btnReportPay";
+            this.btnReportPay.Size = new System.Drawing.Size(148, 69);
+            this.btnReportPay.Text = "گزارش پرداختی ها";
+            this.btnReportPay.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnReportPay.Click += new System.EventHandler(this.btnReportPay_Click);
+            // 
+            // btnReportRecive
+            // 
+            this.btnReportRecive.Image = global::Accounting_App.Properties.Resources.list2;
+            this.btnReportRecive.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnReportRecive.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnReportRecive.Name = "btnReportRecive";
+            this.btnReportRecive.Size = new System.Drawing.Size(150, 69);
+            this.btnReportRecive.Text = "گزارش دریافتی ها";
+            this.btnReportRecive.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnReportRecive.Click += new System.EventHandler(this.btnReportRecive_Click);
+            // 
+            // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -101,11 +127,12 @@
             this.Controls.Add(this.toolStrip1);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "frmMain";
+            this.Name = "FrmMain";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "حسابداری شخصی من";
+            this.Load += new System.EventHandler(this.FrmMain_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.toolStrip2.ResumeLayout(false);
@@ -122,6 +149,8 @@
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripButton btnCustomers;
         private System.Windows.Forms.ToolStripButton btnNewAcconting;
+        private System.Windows.Forms.ToolStripButton btnReportPay;
+        private System.Windows.Forms.ToolStripButton btnReportRecive;
     }
 }
 

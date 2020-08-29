@@ -56,9 +56,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Accounting.DataLayer\Accounting.Data.Layer.csproj">
+    <ProjectReference Include="..\Accounting.DataLayer\Accounting.DataLayer.csproj">
       <Project>{9d501adf-e32f-4cf2-8216-9ff0ace93de0}</Project>
-      <Name>Accounting.Data.Layer</Name>
+      <Name>Accounting.DataLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -16,8 +16,8 @@ namespace Accounting_App
 {
     public partial class frmNewTransaction : Form
     {
-        UnitOfWork db = new UnitOfWork();
-
+        private UnitOfWork db;
+        public int accountID = 0;
         public frmNewTransaction()
         {
             InitializeComponent();
@@ -25,8 +25,27 @@ namespace Accounting_App
 
         private void frmNewTransaction_Load(object sender, EventArgs e)
         {
+            db = new UnitOfWork();
             dgvCustomers.AutoGenerateColumns = false;
             dgvCustomers.DataSource = db.CustomerRepository.GetCustomerByName();
+            if (accountID != 0)
+            {
+                var account = db.AccountingRepository.GetById(accountID);
+                txtAmount.Text = account.Amount.ToString();
+                txtDescription.Text = account.Desceription.ToString();
+                txtName.Text = db.CustomerRepository.GetCustomerNameById(account.CustomerID);
+                if (account.TypeID == 1)
+                {
+                    rbRecive.Checked = true;
+                }
+                else
+                {
+                    rbPay.Checked = true;
+                }
+                this.Text = "ویرایش";
+                btnSave.Text = "ویرایش";
+            }
+            db.Dispose();
         }
 
         private void txtFilter_TextChanged(object sender, EventArgs e)
@@ -41,6 +60,7 @@ namespace Accounting_App
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            db = new UnitOfWork();
             if (rbPay.Checked || rbRecive.Checked)
             {
                 Accounting.DataLayer.Accounting accounting = new Accounting.DataLayer.Accounting()
@@ -51,8 +71,18 @@ namespace Accounting_App
                     Desceription = txtDescription.Text,
                     DateTime = DateTime.Now
                 };
-                db.AccountingRepository.Insert(accounting);
+                if (accountID==0)
+                {
+                    db.AccountingRepository.Insert(accounting);
+                }
+                else
+                {
+
+                    accounting.AccountingID = accountID;
+                    db.AccountingRepository.Update(accounting);
+                }
                 db.Save();
+                db.Dispose();
                 DialogResult = DialogResult.OK;
             }
             else
@@ -63,4 +93,4 @@ namespace Accounting_App
         }
 
     }
-    }
+}

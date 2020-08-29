@@ -32,5 +32,25 @@ namespace Accounting_App
                 RtlMessageBox.Show("عملیات با موفقیت انجام گردید.");
             }
         }
+
+        private void btnReportPay_Click(object sender, EventArgs e)
+        {
+            frmReport frm = new frmReport();
+            frm.TypeID = 1;
+            frm.ShowDialog();
+
+        }
+
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnReportRecive_Click(object sender, EventArgs e)
+        {
+            frmReport frm = new frmReport();
+            frm.TypeID = 2;
+            frm.ShowDialog();
+        }
     }
 }

@@ -80,6 +80,11 @@ namespace Accounting.DataLayer.Services
             return db.Customers.First(c => c.FullName == CustomerName).CustomerID;
         }
 
+        public string GetCustomerNameById(int customerId)
+        {
+            return db.Customers.Find(customerId).FullName;
+        }
+
         public IEnumerable<Customers> GetCustomersByFilter(string parameter)
         {
             return db.Customers.Where(c =>

@@ -14,6 +14,7 @@ namespace Accounting.DataLayer.Repositories
         List<ListCustomerView> GetCustomerByName(string filter = "");
         Customers GetCustomerById(int customerId);
         int GetCustomerIDByName(string CustomerName);
+        string GetCustomerNameById(int customerId);
         bool InsertCustomer(Customers customer);
         bool UpdateCustomer(Customers customer);
         bool DeleteCustomer(Customers customer);
