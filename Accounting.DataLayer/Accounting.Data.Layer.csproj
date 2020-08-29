@@ -109,5 +109,11 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Accounting_ViewModel\Accounting_ViewModel.csproj">
+      <Project>{680ed6c2-66a8-44b3-bcb3-1545446e9c37}</Project>
+      <Name>Accounting_ViewModel</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

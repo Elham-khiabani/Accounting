@@ -23,6 +23,22 @@ namespace Accounting.DataLayer.Context
                 return _customerRepository;
             }
         }
+
+
+        private GenericRepository<Accounting> _accountingRepository;
+        public GenericRepository<Accounting> AccountingRepository 
+        { 
+            get
+            {
+                if (_accountingRepository==null)
+                {
+                    _accountingRepository = new GenericRepository<Accounting>(db);
+
+                }
+                return _accountingRepository;
+            }
+                
+        }
         public void Dispose()
         {
             db.Dispose();

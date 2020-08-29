@@ -206,6 +206,10 @@
       <Project>{e05814cf-215d-4a56-b895-a8d5995ecb0d}</Project>
       <Name>Accounting_Utility</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Accounting_ViewModel\Accounting_ViewModel.csproj">
+      <Project>{680ed6c2-66a8-44b3-bcb3-1545446e9c37}</Project>
+      <Name>Accounting_ViewModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\download.png" />

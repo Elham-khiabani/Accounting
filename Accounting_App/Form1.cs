@@ -22,5 +22,15 @@ namespace Accounting_App
             frmCustomers frm = new frmCustomers();
             frm.ShowDialog();
         }
+
+        private void btnNewAcconting_Click(object sender, EventArgs e)
+        {
+            frmNewTransaction frm = new frmNewTransaction();
+            
+            if (frm.ShowDialog()==DialogResult.OK)
+            {
+                RtlMessageBox.Show("عملیات با موفقیت انجام گردید.");
+            }
+        }
     }
 }

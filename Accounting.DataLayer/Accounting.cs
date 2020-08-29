@@ -19,6 +19,7 @@ namespace Accounting.DataLayer
         public byte TypeID { get; set; }
         public decimal Amount { get; set; }
         public string Desceription { get; set; }
+        public System.DateTime DateTime { get; set; }
     
         public virtual AccountingType AccountingType { get; set; }
         public virtual Customers Customers { get; set; }

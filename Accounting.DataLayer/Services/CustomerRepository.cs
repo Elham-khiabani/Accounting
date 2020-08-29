@@ -1,5 +1,5 @@
 ﻿using Accounting.DataLayer.Repositories;
-
+using Accounting_ViewModel.Customer;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -56,6 +56,30 @@ namespace Accounting.DataLayer.Services
             return db.Customers.Find(customerId);
         }
 
+        public List<ListCustomerView> GetCustomerByName(string filter = "")
+        {
+            if (filter == "")
+            {
+                return db.Customers.Select(c => new ListCustomerView()
+                {
+                    CustomerID = c.CustomerID,
+                    FullName = c.FullName
+                }
+                ).ToList();
+            }
+            return db.Customers.Where(c => c.FullName.Contains(filter)).Select(c => new ListCustomerView()
+            {
+                CustomerID = c.CustomerID,
+                FullName = c.FullName
+            }
+            ).ToList();
+        }
+
+        public int GetCustomerIDByName(string CustomerName)
+        {
+            return db.Customers.First(c => c.FullName == CustomerName).CustomerID;
+        }
+
         public IEnumerable<Customers> GetCustomersByFilter(string parameter)
         {
             return db.Customers.Where(c =>
@@ -91,5 +115,7 @@ namespace Accounting.DataLayer.Services
                 return false;
             }
         }
+
+
     }
 }

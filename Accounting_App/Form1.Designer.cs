@@ -40,11 +40,12 @@
             // 
             // toolStrip1
             // 
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripDropDownButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(575, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(575, 34);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -54,17 +55,18 @@
             this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(63, 22);
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(96, 29);
             this.toolStripDropDownButton1.Text = "تنظیمات";
             // 
             // toolStrip2
             // 
+            this.toolStrip2.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnCustomers,
             this.btnNewAcconting});
-            this.toolStrip2.Location = new System.Drawing.Point(0, 25);
+            this.toolStrip2.Location = new System.Drawing.Point(0, 34);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(575, 62);
+            this.toolStrip2.Size = new System.Drawing.Size(575, 74);
             this.toolStrip2.TabIndex = 1;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -74,7 +76,7 @@
             this.btnCustomers.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnCustomers.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCustomers.Name = "btnCustomers";
-            this.btnCustomers.Size = new System.Drawing.Size(71, 59);
+            this.btnCustomers.Size = new System.Drawing.Size(108, 69);
             this.btnCustomers.Text = "طرف حساب";
             this.btnCustomers.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCustomers.Click += new System.EventHandler(this.btnCustomers_Click);
@@ -85,13 +87,14 @@
             this.btnNewAcconting.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnNewAcconting.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnNewAcconting.Name = "btnNewAcconting";
-            this.btnNewAcconting.Size = new System.Drawing.Size(72, 59);
+            this.btnNewAcconting.Size = new System.Drawing.Size(109, 69);
             this.btnNewAcconting.Text = "تراکنش جدید";
             this.btnNewAcconting.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnNewAcconting.Click += new System.EventHandler(this.btnNewAcconting_Click);
             // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(575, 463);
             this.Controls.Add(this.toolStrip2);

@@ -25,8 +25,8 @@ namespace Accounting.DataLayer
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Customers> Customers { get; set; }
         public virtual DbSet<Accounting> Accounting { get; set; }
         public virtual DbSet<AccountingType> AccountingType { get; set; }
+        public virtual DbSet<Customers> Customers { get; set; }
     }
 }
