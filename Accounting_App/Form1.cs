@@ -1,4 +1,5 @@
 ﻿using Accounting_Utility.Convertor;
+using Accounting_ViewModel.Accounting;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -51,7 +52,8 @@ namespace Accounting_App
             {
                 this.Show();
                 lblDate.Text = DateTime.Now.ToShamsi();
-                lblTime.Text = DateTime.Now.ToShortTimeString();
+                lblTime.Text = DateTime.Now.ToShortTimeString();     
+                Report();
             }
             else
             {
@@ -77,6 +79,14 @@ namespace Accounting_App
             LoginForm loginForm = new LoginForm();
             loginForm.IsEdit = true;
             loginForm.ShowDialog();
+        }
+
+        void Report()
+        {
+            ReportViewModel report = Accounting_Business.Account.ReportForMain();
+            lblPay.Text = report.Pay.ToString("#,0");
+            lblRecive.Text = report.Recive.ToString("#,0");
+            lblRecive.Text = report.AccountBalance.ToString("#,0");
         }
     }
 }

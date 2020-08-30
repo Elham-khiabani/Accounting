@@ -230,6 +230,10 @@
       <Project>{9d501adf-e32f-4cf2-8216-9ff0ace93de0}</Project>
       <Name>Accounting.DataLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Accounting_Business\Accounting_Business.csproj">
+      <Project>{95c4557e-c309-4799-9f48-0c76f5d7e3b8}</Project>
+      <Name>Accounting_Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Accounting_Utility\Accounting_Utility.csproj">
       <Project>{e05814cf-215d-4a56-b895-a8d5995ecb0d}</Project>
       <Name>Accounting_Utility</Name>
