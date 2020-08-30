@@ -34,18 +34,19 @@
             this.btnRefresh = new System.Windows.Forms.ToolStripButton();
             this.btnPrint = new System.Windows.Forms.ToolStripButton();
             this.gbSearch = new System.Windows.Forms.GroupBox();
-            this.lblCustomer = new System.Windows.Forms.Label();
-            this.cbCustomer = new System.Windows.Forms.ComboBox();
-            this.lblDateFrom = new System.Windows.Forms.Label();
-            this.txtDateFrom = new System.Windows.Forms.MaskedTextBox();
+            this.btnFilter = new System.Windows.Forms.Button();
             this.txtDateTo = new System.Windows.Forms.MaskedTextBox();
             this.lblDateTo = new System.Windows.Forms.Label();
-            this.btnFilter = new System.Windows.Forms.Button();
+            this.txtDateFrom = new System.Windows.Forms.MaskedTextBox();
+            this.lblDateFrom = new System.Windows.Forms.Label();
+            this.cbCustomer = new System.Windows.Forms.ComboBox();
+            this.lblCustomer = new System.Windows.Forms.Label();
             this.dgReport = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stiPrint = new Stimulsoft.Report.StiReport();
             this.toolStrip1.SuspendLayout();
             this.gbSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgReport)).BeginInit();
@@ -107,6 +108,7 @@
             this.btnPrint.Size = new System.Drawing.Size(49, 69);
             this.btnPrint.Text = "چاپ";
             this.btnPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // gbSearch
             // 
@@ -124,40 +126,15 @@
             this.gbSearch.TabStop = false;
             this.gbSearch.Text = "جستجو";
             // 
-            // lblCustomer
+            // btnFilter
             // 
-            this.lblCustomer.AutoSize = true;
-            this.lblCustomer.Location = new System.Drawing.Point(645, 46);
-            this.lblCustomer.Name = "lblCustomer";
-            this.lblCustomer.Size = new System.Drawing.Size(109, 22);
-            this.lblCustomer.TabIndex = 0;
-            this.lblCustomer.Text = "طرف حساب:";
-            // 
-            // cbCustomer
-            // 
-            this.cbCustomer.FormattingEnabled = true;
-            this.cbCustomer.Location = new System.Drawing.Point(467, 46);
-            this.cbCustomer.Name = "cbCustomer";
-            this.cbCustomer.Size = new System.Drawing.Size(172, 30);
-            this.cbCustomer.TabIndex = 1;
-            // 
-            // lblDateFrom
-            // 
-            this.lblDateFrom.AutoSize = true;
-            this.lblDateFrom.Location = new System.Drawing.Point(394, 43);
-            this.lblDateFrom.Name = "lblDateFrom";
-            this.lblDateFrom.Size = new System.Drawing.Size(68, 22);
-            this.lblDateFrom.TabIndex = 2;
-            this.lblDateFrom.Text = "از تاریخ:";
-            // 
-            // txtDateFrom
-            // 
-            this.txtDateFrom.Location = new System.Drawing.Point(288, 43);
-            this.txtDateFrom.Mask = "0000/00/00";
-            this.txtDateFrom.Name = "txtDateFrom";
-            this.txtDateFrom.Size = new System.Drawing.Size(100, 29);
-            this.txtDateFrom.TabIndex = 3;
-            this.txtDateFrom.ValidatingType = typeof(System.DateTime);
+            this.btnFilter.Location = new System.Drawing.Point(16, 41);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(75, 31);
+            this.btnFilter.TabIndex = 6;
+            this.btnFilter.Text = "انجام";
+            this.btnFilter.UseVisualStyleBackColor = true;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // txtDateTo
             // 
@@ -177,15 +154,40 @@
             this.lblDateTo.TabIndex = 4;
             this.lblDateTo.Text = "تا تاریخ:";
             // 
-            // btnFilter
+            // txtDateFrom
             // 
-            this.btnFilter.Location = new System.Drawing.Point(16, 41);
-            this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(75, 31);
-            this.btnFilter.TabIndex = 6;
-            this.btnFilter.Text = "انجام";
-            this.btnFilter.UseVisualStyleBackColor = true;
-            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
+            this.txtDateFrom.Location = new System.Drawing.Point(288, 43);
+            this.txtDateFrom.Mask = "0000/00/00";
+            this.txtDateFrom.Name = "txtDateFrom";
+            this.txtDateFrom.Size = new System.Drawing.Size(100, 29);
+            this.txtDateFrom.TabIndex = 3;
+            this.txtDateFrom.ValidatingType = typeof(System.DateTime);
+            // 
+            // lblDateFrom
+            // 
+            this.lblDateFrom.AutoSize = true;
+            this.lblDateFrom.Location = new System.Drawing.Point(394, 43);
+            this.lblDateFrom.Name = "lblDateFrom";
+            this.lblDateFrom.Size = new System.Drawing.Size(68, 22);
+            this.lblDateFrom.TabIndex = 2;
+            this.lblDateFrom.Text = "از تاریخ:";
+            // 
+            // cbCustomer
+            // 
+            this.cbCustomer.FormattingEnabled = true;
+            this.cbCustomer.Location = new System.Drawing.Point(467, 46);
+            this.cbCustomer.Name = "cbCustomer";
+            this.cbCustomer.Size = new System.Drawing.Size(172, 30);
+            this.cbCustomer.TabIndex = 1;
+            // 
+            // lblCustomer
+            // 
+            this.lblCustomer.AutoSize = true;
+            this.lblCustomer.Location = new System.Drawing.Point(645, 46);
+            this.lblCustomer.Name = "lblCustomer";
+            this.lblCustomer.Size = new System.Drawing.Size(109, 22);
+            this.lblCustomer.TabIndex = 0;
+            this.lblCustomer.Text = "طرف حساب:";
             // 
             // dgReport
             // 
@@ -239,6 +241,27 @@
             this.DateTime.Name = "DateTime";
             this.DateTime.ReadOnly = true;
             // 
+            // stiPrint
+            // 
+            this.stiPrint.CookieContainer = null;
+            this.stiPrint.EngineVersion = Stimulsoft.Report.Engine.StiEngineVersion.EngineV2;
+            this.stiPrint.ReferencedAssemblies = new string[] {
+        "System.Dll",
+        "System.Drawing.Dll",
+        "System.Windows.Forms.Dll",
+        "System.Data.Dll",
+        "System.Xml.Dll",
+        "Stimulsoft.Controls.Dll",
+        "Stimulsoft.Base.Dll",
+        "Stimulsoft.Report.Dll"};
+            this.stiPrint.ReportAlias = "Report";
+            this.stiPrint.ReportGuid = "ba557e6472f74a218987eb26a61e743d";
+            this.stiPrint.ReportName = "Report";
+            this.stiPrint.ReportSource = null;
+            this.stiPrint.ReportUnit = Stimulsoft.Report.StiReportUnitType.Inches;
+            this.stiPrint.ScriptLanguage = Stimulsoft.Report.StiReportLanguageType.CSharp;
+            this.stiPrint.UseProgressInThread = false;
+            // 
             // frmReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
@@ -284,5 +307,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CustomerID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateTime;
+        private Stimulsoft.Report.StiReport stiPrint;
     }
 }

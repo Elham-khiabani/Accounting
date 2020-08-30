@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Accounting_Utility.Convertor;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -42,8 +43,20 @@ namespace Accounting_App
         }
 
         private void FrmMain_Load(object sender, EventArgs e)
-        {
+        {      
 
+            this.Hide();
+            LoginForm loginForm = new LoginForm();
+            if (loginForm.ShowDialog()==DialogResult.OK)
+            {
+                this.Show();
+                lblDate.Text = DateTime.Now.ToShamsi();
+                lblTime.Text = DateTime.Now.ToShortTimeString();
+            }
+            else
+            {
+                Application.Exit();
+            }
         }
 
         private void btnReportRecive_Click(object sender, EventArgs e)
@@ -51,6 +64,19 @@ namespace Accounting_App
             frmReport frm = new frmReport();
             frm.TypeID = 2;
             frm.ShowDialog();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lblTime.Text = DateTime.Now.ToShortTimeString();
+
+        }
+
+        private void btnEditLogin_Click(object sender, EventArgs e)
+        {
+            LoginForm loginForm = new LoginForm();
+            loginForm.IsEdit = true;
+            loginForm.ShowDialog();
         }
     }
 }
